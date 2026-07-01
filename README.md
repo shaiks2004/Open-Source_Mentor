@@ -17,7 +17,7 @@ Transform any GitHub repository into an intelligent developer workspace with AI-
 
 🌐 **Live Demo:** https://opensource-mentor.apps.lemma.work
 
-🎥 **Demo Video:** *(Add YouTube Link)*
+🎥 **Demo Video:** https://drive.google.com/file/d/1ea84rPjduQxopO2kbToJC9ADTEdkRbSV/view?usp=drive_link
 
 📖 **Documentation:** See the docs below
 
