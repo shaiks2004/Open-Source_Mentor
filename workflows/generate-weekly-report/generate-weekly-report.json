@@ -1,0 +1,42 @@
+{
+  "name": "generate-weekly-report",
+  "description": "Compiles weekly analytics on learning hours, pull requests submitted, and issue resolutions.",
+  "start": { "type": "MANUAL" },
+  "visibility": "POD",
+  "nodes": [
+    {
+      "id": "intake",
+      "type": "FORM",
+      "label": "Report Form",
+      "config": {
+        "input_schema": {
+          "type": "object",
+          "properties": {
+            "developer_id": { "type": "string", "description": "Database ID of the developer" }
+          },
+          "required": ["developer_id"]
+        }
+      }
+    },
+    {
+      "id": "run_report",
+      "type": "AGENT",
+      "label": "Weekly Report Agent",
+      "config": {
+        "agent_name": "contribution-tracker",
+        "input_mapping": {
+          "developer_id": { "type": "expression", "value": "intake.developer_id" }
+        }
+      }
+    },
+    {
+      "id": "end",
+      "type": "END",
+      "label": "Done"
+    }
+  ],
+  "edges": [
+    { "id": "e1", "source": "intake", "target": "run_report" },
+    { "id": "e2", "source": "run_report", "target": "end" }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "name": "fetch_github_repo",
+  "description": "Fetch repository metadata and main documentation files from GitHub.",
+  "type": "API",
+  "code": {
+    "$file": "code.py"
+  }
+}

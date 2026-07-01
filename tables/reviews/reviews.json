@@ -1,0 +1,45 @@
+{
+  "name": "reviews",
+  "primary_key_column": "id",
+  "enable_rls": false,
+  "columns": [
+    {
+      "name": "pull_request_id",
+      "type": "UUID",
+      "required": true,
+      "foreign_key": {
+        "references": "pull_requests.id"
+      }
+    },
+    {
+      "name": "reviewer_type",
+      "type": "ENUM",
+      "required": false,
+      "default": "ai_assistant",
+      "options": ["ai_assistant", "human_maintainer"]
+    },
+    {
+      "name": "reviewer_id",
+      "type": "UUID",
+      "required": false
+    },
+    {
+      "name": "feedback",
+      "type": "TEXT",
+      "required": true
+    },
+    {
+      "name": "suggestions",
+      "type": "JSON",
+      "required": false
+    },
+    {
+      "name": "approval_status",
+      "type": "ENUM",
+      "required": false,
+      "default": "comment",
+      "options": ["comment", "request_changes", "approve"]
+    }
+  ],
+  "config": {}
+}

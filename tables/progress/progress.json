@@ -1,0 +1,50 @@
+{
+  "name": "progress",
+  "primary_key_column": "id",
+  "enable_rls": true,
+  "columns": [
+    {
+      "name": "developer_id",
+      "type": "UUID",
+      "required": true,
+      "foreign_key": {
+        "references": "users.id"
+      }
+    },
+    {
+      "name": "learning_module_id",
+      "type": "UUID",
+      "required": true,
+      "foreign_key": {
+        "references": "learning_modules.id"
+      }
+    },
+    {
+      "name": "current_step",
+      "type": "INTEGER",
+      "required": false,
+      "default": 0
+    },
+    {
+      "name": "completed_steps",
+      "type": "JSON",
+      "required": false
+    },
+    {
+      "name": "quiz_scores",
+      "type": "JSON",
+      "required": false
+    },
+    {
+      "name": "notes",
+      "type": "TEXT",
+      "required": false
+    },
+    {
+      "name": "last_updated_at",
+      "type": "DATETIME",
+      "required": false
+    }
+  ],
+  "config": {}
+}

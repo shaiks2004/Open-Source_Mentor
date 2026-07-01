@@ -1,0 +1,24 @@
+# Python virtual environments
+.venv/
+__pycache__/
+*.pyc
+
+# Node / frontend build output
+node_modules/
+dist/
+dist.zip
+.next/
+.turbo/
+.cache/
+
+# Local Environment files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Temporary files & logs
+scratch/
+*.log
+*.zip
+.system_generated/

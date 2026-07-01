@@ -1,0 +1,148 @@
+{
+  "name": "import-repository",
+  "description": "Asynchronously imports a repository, validates URL, crawls metadata, scans files, analyzes architecture, and recommends beginner issues.",
+  "start": { "type": "MANUAL" },
+  "visibility": "POD",
+  "nodes": [
+    {
+      "id": "intake",
+      "type": "FORM",
+      "label": "Import Form",
+      "config": {
+        "input_schema": {
+          "type": "object",
+          "properties": {
+            "url": { "type": "string", "description": "GitHub repository URL" }
+          },
+          "required": ["url"]
+        }
+      }
+    },
+    {
+      "id": "validate_url",
+      "type": "FUNCTION",
+      "label": "Validate URL",
+      "config": {
+        "function_name": "validate_github_url",
+        "input_mapping": {
+          "url": { "type": "expression", "value": "intake.url" }
+        }
+      }
+    },
+    {
+      "id": "fetch_repo",
+      "type": "FUNCTION",
+      "label": "Fetch Metadata",
+      "config": {
+        "function_name": "fetch_github_repo",
+        "input_mapping": {
+          "owner": { "type": "expression", "value": "validate_url.owner" },
+          "repo": { "type": "expression", "value": "validate_url.repo" }
+        }
+      }
+    },
+    {
+      "id": "create_repo_record",
+      "type": "FUNCTION",
+      "label": "Create Repo Record",
+      "config": {
+        "function_name": "create_repositories_record",
+        "input_mapping": {
+          "name": { "type": "expression", "value": "fetch_repo.name" },
+          "url": { "type": "expression", "value": "fetch_repo.url" },
+          "description": { "type": "expression", "value": "fetch_repo.description" },
+          "language": { "type": "expression", "value": "fetch_repo.primary_language" },
+          "stars": { "type": "expression", "value": "fetch_repo.stars" }
+        }
+      }
+    },
+    {
+      "id": "save_readme",
+      "type": "FUNCTION",
+      "label": "Save README to Knowledge",
+      "config": {
+        "function_name": "create_knowledge_record",
+        "input_mapping": {
+          "repository_id": { "type": "expression", "value": "create_repo_record.id" },
+          "content_type": { "type": "literal", "value": "readme" },
+          "title": { "type": "literal", "value": "README.md" },
+          "content": { "type": "expression", "value": "fetch_repo.readme_content" },
+          "source_file": { "type": "literal", "value": "README.md" }
+        }
+      }
+    },
+    {
+      "id": "analyze_codebase",
+      "type": "AGENT",
+      "label": "Analyze Codebase",
+      "config": {
+        "agent_name": "repository-analyzer",
+        "input_mapping": {
+          "repository_id": { "type": "expression", "value": "create_repo_record.id" }
+        }
+      }
+    },
+    {
+      "id": "explain_arch",
+      "type": "AGENT",
+      "label": "Explain Architecture",
+      "config": {
+        "agent_name": "architecture-explainer",
+        "input_mapping": {
+          "repository_id": { "type": "expression", "value": "create_repo_record.id" }
+        }
+      }
+    },
+    {
+      "id": "fetch_issues",
+      "type": "FUNCTION",
+      "label": "Fetch Issues",
+      "config": {
+        "function_name": "fetch_github_issues",
+        "input_mapping": {
+          "owner": { "type": "expression", "value": "validate_url.owner" },
+          "repo": { "type": "expression", "value": "validate_url.repo" }
+        }
+      }
+    },
+    {
+      "id": "recommend_issues",
+      "type": "AGENT",
+      "label": "Recommend Issues",
+      "config": {
+        "agent_name": "issue-recommender",
+        "input_mapping": {
+          "repository_id": { "type": "expression", "value": "create_repo_record.id" }
+        }
+      }
+    },
+    {
+      "id": "generate_learning_path",
+      "type": "AGENT",
+      "label": "Generate Learning Path",
+      "config": {
+        "agent_name": "learning-coach",
+        "input_mapping": {
+          "repository_id": { "type": "expression", "value": "create_repo_record.id" }
+        }
+      }
+    },
+    {
+      "id": "end",
+      "type": "END",
+      "label": "Done"
+    }
+  ],
+  "edges": [
+    { "id": "e1", "source": "intake", "target": "validate_url" },
+    { "id": "e2", "source": "validate_url", "target": "fetch_repo" },
+    { "id": "e3", "source": "fetch_repo", "target": "create_repo_record" },
+    { "id": "e4", "source": "create_repo_record", "target": "save_readme" },
+    { "id": "e5", "source": "save_readme", "target": "analyze_codebase" },
+    { "id": "e6", "source": "analyze_codebase", "target": "explain_arch" },
+    { "id": "e7", "source": "explain_arch", "target": "fetch_issues" },
+    { "id": "e8", "source": "fetch_issues", "target": "recommend_issues" },
+    { "id": "e9", "source": "recommend_issues", "target": "generate_learning_path" },
+    { "id": "e10", "source": "generate_learning_path", "target": "end" }
+  ]
+}

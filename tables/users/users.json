@@ -1,0 +1,53 @@
+{
+  "name": "users",
+  "primary_key_column": "id",
+  "enable_rls": true,
+  "columns": [
+    {
+      "name": "name",
+      "type": "TEXT",
+      "required": true
+    },
+    {
+      "name": "email",
+      "type": "TEXT",
+      "required": true
+    },
+    {
+      "name": "github_username",
+      "type": "TEXT",
+      "required": false
+    },
+    {
+      "name": "experience_level",
+      "type": "ENUM",
+      "required": false,
+      "default": "beginner",
+      "options": ["beginner", "intermediate", "advanced"]
+    },
+    {
+      "name": "preferred_languages",
+      "type": "JSON",
+      "required": false
+    },
+    {
+      "name": "repositories_contributed_to",
+      "type": "INTEGER",
+      "required": false,
+      "default": 0
+    },
+    {
+      "name": "total_prs_submitted",
+      "type": "INTEGER",
+      "required": false,
+      "default": 0
+    },
+    {
+      "name": "total_hours_learning",
+      "type": "INTEGER",
+      "required": false,
+      "default": 0
+    }
+  ],
+  "config": {}
+}

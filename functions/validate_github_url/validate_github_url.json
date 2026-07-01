@@ -1,0 +1,8 @@
+{
+  "name": "validate_github_url",
+  "description": "Validate a GitHub repository URL format.",
+  "type": "API",
+  "code": {
+    "$file": "code.py"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "name": "update_issue_record",
+  "description": "Create or update an issue record in the datastore.",
+  "type": "API",
+  "code": {
+    "$file": "code.py"
+  },
+  "permissions": {
+    "grants": [
+      {
+        "resource_type": "datastore_table",
+        "resource_name": "issues",
+        "permission_ids": [
+          "datastore.table.read",
+          "datastore.record.read",
+          "datastore.record.write"
+        ]
+      }
+    ]
+  }
+}

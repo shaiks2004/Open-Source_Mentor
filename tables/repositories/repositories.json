@@ -1,0 +1,48 @@
+{
+  "name": "repositories",
+  "primary_key_column": "id",
+  "enable_rls": false,
+  "columns": [
+    {
+      "name": "name",
+      "type": "TEXT",
+      "required": true
+    },
+    {
+      "name": "url",
+      "type": "TEXT",
+      "required": true,
+      "unique": true
+    },
+    {
+      "name": "description",
+      "type": "TEXT",
+      "required": false
+    },
+    {
+      "name": "language",
+      "type": "TEXT",
+      "required": false
+    },
+    {
+      "name": "stars",
+      "type": "INTEGER",
+      "required": false,
+      "default": 0
+    },
+    {
+      "name": "difficulty_level",
+      "type": "ENUM",
+      "required": false,
+      "default": "beginner",
+      "options": ["beginner", "intermediate", "advanced"]
+    },
+    {
+      "name": "archived",
+      "type": "BOOLEAN",
+      "required": false,
+      "default": false
+    }
+  ],
+  "config": {}
+}

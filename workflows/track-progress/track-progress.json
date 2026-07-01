@@ -1,0 +1,44 @@
+{
+  "name": "track-progress",
+  "description": "Monitors and logs developers' learning progress and achievements, updating profiles dynamically.",
+  "start": { "type": "MANUAL" },
+  "visibility": "POD",
+  "nodes": [
+    {
+      "id": "intake",
+      "type": "FORM",
+      "label": "Progress Intake",
+      "config": {
+        "input_schema": {
+          "type": "object",
+          "properties": {
+            "developer_id": { "type": "string", "description": "Database ID of the developer" },
+            "learning_module_id": { "type": "string", "description": "Database ID of the learning module" }
+          },
+          "required": ["developer_id", "learning_module_id"]
+        }
+      }
+    },
+    {
+      "id": "run_tracker",
+      "type": "AGENT",
+      "label": "Contribution Tracker Agent",
+      "config": {
+        "agent_name": "contribution-tracker",
+        "input_mapping": {
+          "developer_id": { "type": "expression", "value": "intake.developer_id" },
+          "learning_module_id": { "type": "expression", "value": "intake.learning_module_id" }
+        }
+      }
+    },
+    {
+      "id": "end",
+      "type": "END",
+      "label": "Done"
+    }
+  ],
+  "edges": [
+    { "id": "e1", "source": "intake", "target": "run_tracker" },
+    { "id": "e2", "source": "run_tracker", "target": "end" }
+  ]
+}

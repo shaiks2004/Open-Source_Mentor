@@ -1,0 +1,58 @@
+{
+  "name": "learning_modules",
+  "primary_key_column": "id",
+  "enable_rls": true,
+  "columns": [
+    {
+      "name": "developer_id",
+      "type": "UUID",
+      "required": false,
+      "foreign_key": {
+        "references": "users.id"
+      }
+    },
+    {
+      "name": "repository_id",
+      "type": "UUID",
+      "required": true,
+      "foreign_key": {
+        "references": "repositories.id"
+      }
+    },
+    {
+      "name": "title",
+      "type": "TEXT",
+      "required": true
+    },
+    {
+      "name": "description",
+      "type": "TEXT",
+      "required": false
+    },
+    {
+      "name": "steps",
+      "type": "JSON",
+      "required": true
+    },
+    {
+      "name": "difficulty",
+      "type": "ENUM",
+      "required": false,
+      "default": "beginner",
+      "options": ["beginner", "intermediate", "advanced"]
+    },
+    {
+      "name": "estimated_duration_hours",
+      "type": "INTEGER",
+      "required": false
+    },
+    {
+      "name": "status",
+      "type": "ENUM",
+      "required": false,
+      "default": "active",
+      "options": ["active", "paused", "completed"]
+    }
+  ],
+  "config": {}
+}

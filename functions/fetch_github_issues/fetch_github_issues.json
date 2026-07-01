@@ -1,0 +1,8 @@
+{
+  "name": "fetch_github_issues",
+  "description": "Fetch open issues from a GitHub repository, filtering out pull requests.",
+  "type": "API",
+  "code": {
+    "$file": "code.py"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "name": "pull_requests",
+  "primary_key_column": "id",
+  "enable_rls": false,
+  "columns": [
+    {
+      "name": "issue_id",
+      "type": "UUID",
+      "required": true,
+      "foreign_key": {
+        "references": "issues.id"
+      }
+    },
+    {
+      "name": "gh_pr_id",
+      "type": "INTEGER",
+      "required": true
+    },
+    {
+      "name": "developer_id",
+      "type": "UUID",
+      "required": true,
+      "foreign_key": {
+        "references": "users.id"
+      }
+    },
+    {
+      "name": "title",
+      "type": "TEXT",
+      "required": true
+    },
+    {
+      "name": "description",
+      "type": "TEXT",
+      "required": false
+    },
+    {
+      "name": "diff_summary",
+      "type": "TEXT",
+      "required": false
+    },
+    {
+      "name": "status",
+      "type": "ENUM",
+      "required": false,
+      "default": "draft",
+      "options": ["draft", "ready", "review", "approved", "merged"]
+    },
+    {
+      "name": "gh_url",
+      "type": "TEXT",
+      "required": false
+    }
+  ],
+  "config": {}
+}

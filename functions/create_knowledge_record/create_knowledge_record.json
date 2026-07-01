@@ -1,0 +1,21 @@
+{
+  "name": "create_knowledge_record",
+  "description": "Create a knowledge/documentation record for a repository in the datastore.",
+  "type": "API",
+  "code": {
+    "$file": "code.py"
+  },
+  "permissions": {
+    "grants": [
+      {
+        "resource_type": "datastore_table",
+        "resource_name": "knowledge",
+        "permission_ids": [
+          "datastore.table.read",
+          "datastore.record.read",
+          "datastore.record.write"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "name": "tasks",
+  "primary_key_column": "id",
+  "enable_rls": true,
+  "columns": [
+    {
+      "name": "issue_id",
+      "type": "UUID",
+      "required": true,
+      "foreign_key": {
+        "references": "issues.id"
+      }
+    },
+    {
+      "name": "developer_id",
+      "type": "UUID",
+      "required": true,
+      "foreign_key": {
+        "references": "users.id"
+      }
+    },
+    {
+      "name": "status",
+      "type": "ENUM",
+      "required": false,
+      "default": "claimed",
+      "options": ["claimed", "in-progress", "review", "completed", "blocked"]
+    },
+    {
+      "name": "started_at",
+      "type": "DATETIME",
+      "required": false
+    },
+    {
+      "name": "completed_at",
+      "type": "DATETIME",
+      "required": false
+    },
+    {
+      "name": "notes",
+      "type": "TEXT",
+      "required": false
+    }
+  ],
+  "config": {}
+}

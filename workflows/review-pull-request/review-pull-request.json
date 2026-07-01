@@ -1,0 +1,42 @@
+{
+  "name": "review-pull-request",
+  "description": "Orchestrates AI code review, scans diffs, drafts suggestions, and records review feedback for human review.",
+  "start": { "type": "MANUAL" },
+  "visibility": "POD",
+  "nodes": [
+    {
+      "id": "intake",
+      "type": "FORM",
+      "label": "Review Form",
+      "config": {
+        "input_schema": {
+          "type": "object",
+          "properties": {
+            "pull_request_id": { "type": "string", "description": "Database ID of the pull request" }
+          },
+          "required": ["pull_request_id"]
+        }
+      }
+    },
+    {
+      "id": "run_reviewer",
+      "type": "AGENT",
+      "label": "PR Review Agent",
+      "config": {
+        "agent_name": "pr-review-assistant",
+        "input_mapping": {
+          "pull_request_id": { "type": "expression", "value": "intake.pull_request_id" }
+        }
+      }
+    },
+    {
+      "id": "end",
+      "type": "END",
+      "label": "Done"
+    }
+  ],
+  "edges": [
+    { "id": "e1", "source": "intake", "target": "run_reviewer" },
+    { "id": "e2", "source": "run_reviewer", "target": "end" }
+  ]
+}

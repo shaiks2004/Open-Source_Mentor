@@ -1,0 +1,42 @@
+{
+  "name": "recommend-issues",
+  "description": "Reviews open issues in a repository, ranks difficulty, estimates duration, and recommends beginner-friendly issues.",
+  "start": { "type": "MANUAL" },
+  "visibility": "POD",
+  "nodes": [
+    {
+      "id": "form_input",
+      "type": "FORM",
+      "label": "Select Repository",
+      "config": {
+        "input_schema": {
+          "type": "object",
+          "properties": {
+            "repository_id": { "type": "string", "description": "Database ID of the repository" }
+          },
+          "required": ["repository_id"]
+        }
+      }
+    },
+    {
+      "id": "run_recommender",
+      "type": "AGENT",
+      "label": "Issue Recommender Agent",
+      "config": {
+        "agent_name": "issue-recommender",
+        "input_mapping": {
+          "repository_id": { "type": "expression", "value": "form_input.repository_id" }
+        }
+      }
+    },
+    {
+      "id": "end",
+      "type": "END",
+      "label": "Done"
+    }
+  ],
+  "edges": [
+    { "id": "e1", "source": "form_input", "target": "run_recommender" },
+    { "id": "e2", "source": "run_recommender", "target": "end" }
+  ]
+}
