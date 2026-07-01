@@ -154,7 +154,8 @@ Update Dashboard
 
 ## Dashboard
 
-> *(Insert dashboard screenshot here)*
+> <img width="960" height="391" alt="image" src="https://github.com/user-attachments/assets/c42e88f2-8bc8-46be-b418-8d88619ae897" />
+
 
 ---
 
@@ -166,13 +167,19 @@ Update Dashboard
 
 ## Issue Recommendation
 
-> *(Insert issue workspace screenshot here)*
+> <img width="950" height="398" alt="image" src="https://github.com/user-attachments/assets/8d0638d1-b657-46ec-9124-c673bd72f8ad" />
+
 
 ---
 
 ## Learning Center
 
-> *(Insert learning center screenshot here)*
+> <img width="960" height="387" alt="image" src="https://github.com/user-attachments/assets/c9f03129-cedc-4c2a-b80f-dd1a8a375c82" />
+  <img width="952" height="384" alt="image" src="https://github.com/user-attachments/assets/b15b39ee-c9d6-43db-8021-69ce2724e226" />
+  <img width="955" height="388" alt="image" src="https://github.com/user-attachments/assets/b99f6963-f3ab-4d71-9f1a-c5232575e95b" />
+
+
+
 
 ---
 
