@@ -1089,7 +1089,7 @@ function App() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          backgroundColor: 'rgba(9, 9, 11, 0.75)',
+          backgroundColor: 'rgba(252, 251, 250, 0.75)',
           backdropFilter: 'blur(8px)',
           WebkitBackdropFilter: 'blur(8px)',
           padding: '16px'
@@ -1097,11 +1097,11 @@ function App() {
           <div className="card" style={{
             maxWidth: '440px',
             width: '100%',
-            backgroundColor: 'rgba(24, 24, 27, 0.95)',
-            border: '1px solid rgba(63, 63, 70, 0.6)',
+            backgroundColor: '#ffffff',
+            border: '1px solid var(--border-color)',
             borderRadius: '16px',
             padding: '32px',
-            boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)',
+            boxShadow: '0 25px 50px -12px rgba(249, 115, 22, 0.15)',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center'
@@ -1110,7 +1110,7 @@ function App() {
               fontFamily: 'var(--font-display)',
               fontSize: '20px',
               fontWeight: 700,
-              color: '#ffffff',
+              color: 'var(--text-primary)',
               marginBottom: '4px',
               textAlign: 'center'
             }}>Importing Repository</h3>
@@ -1131,7 +1131,7 @@ function App() {
                   inset: '-4px',
                   borderRadius: '50%',
                   border: '2px solid transparent',
-                  borderTopColor: '#3b82f6',
+                  borderTopColor: 'var(--accent-orange)',
                   animation: 'spin 2s linear infinite',
                   opacity: 0.5
                 }} />
@@ -1141,7 +1141,7 @@ function App() {
                   cx="64"
                   cy="64"
                   r="54"
-                  stroke="rgba(63, 63, 70, 0.3)"
+                  stroke="rgba(249, 115, 22, 0.15)"
                   strokeWidth="8"
                   fill="transparent"
                 />
@@ -1149,7 +1149,7 @@ function App() {
                   cx="64"
                   cy="64"
                   r="54"
-                  stroke={importWorkflow.run.status === 'FAILED' ? '#ef4444' : '#3b82f6'}
+                  stroke={importWorkflow.run.status === 'FAILED' ? 'var(--accent-red)' : 'var(--accent-orange)'}
                   strokeWidth="8"
                   fill="transparent"
                   strokeDasharray={2 * Math.PI * 54}
@@ -1167,7 +1167,7 @@ function App() {
                 alignItems: 'center',
                 justifyContent: 'center'
               }}>
-                <span style={{ fontSize: '26px', fontWeight: 800, color: '#ffffff', lineHeight: 1 }}>
+                <span style={{ fontSize: '26px', fontWeight: 800, color: 'var(--text-primary)', lineHeight: 1 }}>
                   {Math.min(Math.round((STAGES.filter(s => getStageStatus(s, importWorkflow.run) === 'completed').length / STAGES.length) * 100), 100)}%
                 </span>
                 <span style={{ fontSize: '10px', color: 'var(--text-secondary)', marginTop: '2px', fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
@@ -1195,18 +1195,18 @@ function App() {
                     alignItems: 'center',
                     justifyContent: 'space-between',
                     fontSize: '13px',
-                    color: status === 'completed' ? '#f4f4f5' : status === 'running' ? '#3b82f6' : status === 'failed' ? '#ef4444' : 'var(--text-secondary)',
+                    color: status === 'completed' ? 'var(--text-primary)' : status === 'running' ? 'var(--accent-orange)' : status === 'failed' ? 'var(--accent-red)' : 'var(--text-secondary)',
                     fontWeight: status === 'running' ? 600 : 400
                   }}>
                     <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                       {status === 'running' && (
-                        <RefreshCw size={14} className="spinner" style={{ color: '#3b82f6' }} />
+                        <RefreshCw size={14} className="spinner" style={{ color: 'var(--accent-orange)' }} />
                       )}
                       {status === 'completed' && (
-                        <CheckCircle2 size={14} style={{ color: '#10b981' }} />
+                        <CheckCircle2 size={14} style={{ color: 'var(--accent-green)' }} />
                       )}
                       {status === 'failed' && (
-                        <AlertTriangle size={14} style={{ color: '#ef4444' }} />
+                        <AlertTriangle size={14} style={{ color: 'var(--accent-red)' }} />
                       )}
                       {status === 'pending' && (
                         <div style={{ width: '14px', height: '14px', borderRadius: '50%', border: '2px solid var(--text-secondary)', opacity: 0.4 }} />
@@ -1267,9 +1267,9 @@ createRoot(document.getElementById('root')!).render(
       <AuthGuard
         client={lemmaClient}
         loadingFallback={
-          <div style={{ display: 'flex', height: '100vh', backgroundColor: '#09090b', alignItems: 'center', justifyContent: 'center', color: '#f4f4f5' }}>
+          <div style={{ display: 'flex', height: '100vh', backgroundColor: '#fcfbfa', alignItems: 'center', justifyContent: 'center', color: '#1c1917' }}>
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px' }}>
-              <div className="spinner" />
+              <div className="spinner" style={{ borderLeftColor: 'var(--accent-orange)' }} />
               <span>Verifying workspace session...</span>
             </div>
           </div>
