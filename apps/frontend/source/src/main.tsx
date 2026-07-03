@@ -501,6 +501,63 @@ function App() {
 
             <div className="detail-layout">
               <div className="detail-main">
+                <div className="card" style={{ marginBottom: '24px', background: 'linear-gradient(135deg, rgba(249, 115, 22, 0.04) 0%, rgba(236, 72, 153, 0.02) 100%)', borderColor: 'rgba(249, 115, 22, 0.25)' }}>
+                  <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '18px', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <Play size={18} style={{ color: 'var(--accent-orange)' }} />
+                    Quick Start Onboarding Guide
+                  </h3>
+                  <p style={{ color: 'var(--text-secondary)', fontSize: '13px', marginBottom: '20px' }}>
+                    Welcome to OpenSource Mentor! Follow these 5 steps to kickstart your open-source journey:
+                  </p>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                    <div style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
+                      <div style={{ width: '22px', height: '22px', borderRadius: '50%', backgroundColor: 'var(--accent-orange)', color: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '11px', fontWeight: 700, flexShrink: 0 }}>1</div>
+                      <div>
+                        <h4 style={{ fontWeight: 600, fontSize: '13.5px', color: 'var(--text-primary)' }}>Set Up Your Profile</h4>
+                        <p style={{ color: 'var(--text-secondary)', fontSize: '12px', marginTop: '2px' }}>
+                          Go to the <span style={{ color: 'var(--accent-purple)', fontWeight: 500, cursor: 'pointer' }} onClick={() => setActiveTab('settings')}>Profile Settings</span> tab to create your profile and choose your experience level.
+                        </p>
+                      </div>
+                    </div>
+                    <div style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
+                      <div style={{ width: '22px', height: '22px', borderRadius: '50%', backgroundColor: 'var(--accent-orange)', color: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '11px', fontWeight: 700, flexShrink: 0 }}>2</div>
+                      <div>
+                        <h4 style={{ fontWeight: 600, fontSize: '13.5px', color: 'var(--text-primary)' }}>Import a Repository</h4>
+                        <p style={{ color: 'var(--text-secondary)', fontSize: '12px', marginTop: '2px' }}>
+                          Go to <span style={{ color: 'var(--accent-purple)', fontWeight: 500, cursor: 'pointer' }} onClick={() => setActiveTab('repos')}>Repositories</span> and enter a GitHub URL to trigger the codebase analysis.
+                        </p>
+                      </div>
+                    </div>
+                    <div style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
+                      <div style={{ width: '22px', height: '22px', borderRadius: '50%', backgroundColor: 'var(--accent-orange)', color: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '11px', fontWeight: 700, flexShrink: 0 }}>3</div>
+                      <div>
+                        <h4 style={{ fontWeight: 600, fontSize: '13.5px', color: 'var(--text-primary)' }}>Claim an analyzed Issue</h4>
+                        <p style={{ color: 'var(--text-secondary)', fontSize: '12px', marginTop: '2px' }}>
+                          Open the <span style={{ color: 'var(--accent-purple)', fontWeight: 500, cursor: 'pointer' }} onClick={() => setActiveTab('issues')}>Issue Workspace</span> to browse recommended issues scored by complexity and claim a task.
+                        </p>
+                      </div>
+                    </div>
+                    <div style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
+                      <div style={{ width: '22px', height: '22px', borderRadius: '50%', backgroundColor: 'var(--accent-orange)', color: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '11px', fontWeight: 700, flexShrink: 0 }}>4</div>
+                      <div>
+                        <h4 style={{ fontWeight: 600, fontSize: '13.5px', color: 'var(--text-primary)' }}>Study Your Syllabus</h4>
+                        <p style={{ color: 'var(--text-secondary)', fontSize: '12px', marginTop: '2px' }}>
+                          Navigate to the <span style={{ color: 'var(--accent-purple)', fontWeight: 500, cursor: 'pointer' }} onClick={() => setActiveTab('learning')}>Learning Center</span> to follow the customized syllabus generated for your repository.
+                        </p>
+                      </div>
+                    </div>
+                    <div style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
+                      <div style={{ width: '22px', height: '22px', borderRadius: '50%', backgroundColor: 'var(--accent-orange)', color: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '11px', fontWeight: 700, flexShrink: 0 }}>5</div>
+                      <div>
+                        <h4 style={{ fontWeight: 600, fontSize: '13.5px', color: 'var(--text-primary)' }}>Submit & Review Pull Request</h4>
+                        <p style={{ color: 'var(--text-secondary)', fontSize: '12px', marginTop: '2px' }}>
+                          Once your code is ready, open a PR and click trigger in <span style={{ color: 'var(--accent-purple)', fontWeight: 500, cursor: 'pointer' }} onClick={() => setActiveTab('prs')}>PR Review</span> to receive automated AI review feedback.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
                 <div className="card">
                   <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '18px', marginBottom: '16px' }}>Active Learning modules</h3>
                   {modules.length === 0 ? (
