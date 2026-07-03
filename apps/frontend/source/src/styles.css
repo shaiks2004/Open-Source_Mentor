@@ -5,27 +5,27 @@
   --font-display: 'Outfit', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 
-  /* Colors */
-  --bg-primary: #030303;
-  --bg-secondary: #09090b;
-  --bg-card: #0e0e11;
-  --bg-card-hover: #141419;
+  /* Warm Sunset Light Mode Colors */
+  --bg-primary: #fcfbfa;
+  --bg-secondary: #f6f2eb;
+  --bg-card: #ffffff;
+  --bg-card-hover: #faf8f5;
   
-  --border-color: rgba(63, 63, 70, 0.4);
-  --border-color-hover: rgba(59, 130, 246, 0.5);
+  --border-color: rgba(249, 115, 22, 0.15);
+  --border-color-hover: rgba(249, 115, 22, 0.4);
   
-  --text-primary: #f4f4f5;
-  --text-secondary: #a1a1aa;
-  --text-muted: #71717a;
+  --text-primary: #1c1917;
+  --text-secondary: #57534e;
+  --text-muted: #878580;
   
-  --accent-purple: #a855f7;
-  --accent-blue: #3b82f6;
-  --accent-green: #22c55e;
+  --accent-purple: #ec4899;
+  --accent-blue: #ea580c;
+  --accent-green: #16a34a;
   --accent-orange: #f97316;
-  --accent-red: #ef4444;
+  --accent-red: #dc2626;
   
-  --accent-gradient: linear-gradient(135deg, #3b82f6 0%, #a855f7 100%);
-  --accent-gradient-hover: linear-gradient(135deg, #60a5fa 0%, #c084fc 100%);
+  --accent-gradient: linear-gradient(135deg, #f97316 0%, #ec4899 100%);
+  --accent-gradient-hover: linear-gradient(135deg, #fb923c 0%, #f472b6 100%);
 }
 
 * {
